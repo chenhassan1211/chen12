@@ -5,7 +5,7 @@ def create_and_copy_sentence_to_file():
     source_content = "chen is smart"
 
     # Define the output directory
-    output_dir = "./out/"
+    output_dir = "/out/"
 
     # Create the output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
