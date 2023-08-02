@@ -20,3 +20,5 @@ try:
     print(f"Output file name: {result_file}")
 except Exception as e:
     print(f"An error occurred: {str(e)}")
+
+create_and_copy_sentence_to_file()
