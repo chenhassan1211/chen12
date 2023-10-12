@@ -1,16 +1,25 @@
-from cnvrgv2 import Cnvrg
-cnvrg = Cnvrg()
-e = Experiment()
+import subprocess
 
-loss_vals = []
-# experiment loop:
-for epoch in range(8):
-    loss_vals.append(loss_func())
+# Parameters
+experiment_title = "your_experiment_title"
+machine_name = "your_machine_name"
+command_to_run = "echo 1"
 
-# attach the chart to the experiment
-loss_chart = LineChart('loss')
-loss_chart.add_series(loss_vals, 's1')
-e.log_metric(loss_chart)
- 
+# Constructing the cnvrg command
+cnvrg_command = [
+    "cnvrg", "run",
+    f"-t='{experiment_title}'",
+    f"--a='{machine_name}'",
+    command_to_run
+]
 
-print("hello")
+# Execute the command
+result = subprocess.run(cnvrg_command, capture_output=True, text=True)
+
+# Check if the command ran successfully
+if result.returncode == 0:
+    print("Command executed successfully!")
+    print(result.stdout)
+else:
+    print("Command failed!")
+    print(result.stderr)
